@@ -20,4 +20,7 @@ class AdminController extends BaseController
         return view('admin.dashboard-layout.dashboard');
     }
     
+    public function dashboardDemo() {    
+        return view('admin.dashboard-layout.admin_template');
+    }
 }

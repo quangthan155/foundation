@@ -1,704 +1,436 @@
 @extends('layouts.admin.dashboard')
-<body class="nav-md">
-    <div class="container body">
-        <div class="main_container">
-    @include('admin/dashboard-layout/sidebar') 
+<body>
+    <section id="container">
     @include('admin/dashboard-layout/header')
+    @include('admin/dashboard-layout/sidebar')
     @section('content')
-    <!-- page content -->
-        <div class="right_col" role="main">
-            <!-- top tiles -->
-            <div class="row tile_count">
-            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-                <span class="count_top"><i class="fa fa-user"></i> Total Users</span>
-                <div class="count">2500</div>
-                <span class="count_bottom"><i class="green">4% </i> From last Week</span>
+    <!-- **********************************************************************************************************************************************************
+        MAIN CONTENT
+        *********************************************************************************************************************************************************** -->
+    <!--main content start-->
+    <section id="main-content">
+      <section class="wrapper">
+        <div class="row">
+          <div class="col-lg-9 main-chart">
+            <!--CUSTOM CHART START -->
+            <div class="border-head">
+              <h3>USER VISITS</h3>
             </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-                <span class="count_top"><i class="fa fa-clock-o"></i> Average Time</span>
-                <div class="count">123.50</div>
-                <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> From last Week</span>
+            <div class="custom-bar-chart">
+              <ul class="y-axis">
+                <li><span>10.000</span></li>
+                <li><span>8.000</span></li>
+                <li><span>6.000</span></li>
+                <li><span>4.000</span></li>
+                <li><span>2.000</span></li>
+                <li><span>0</span></li>
+              </ul>
+              <div class="bar">
+                <div class="title">JAN</div>
+                <div class="value tooltips" data-original-title="8.500" data-toggle="tooltip" data-placement="top">85%</div>
+              </div>
+              <div class="bar ">
+                <div class="title">FEB</div>
+                <div class="value tooltips" data-original-title="5.000" data-toggle="tooltip" data-placement="top">50%</div>
+              </div>
+              <div class="bar ">
+                <div class="title">MAR</div>
+                <div class="value tooltips" data-original-title="6.000" data-toggle="tooltip" data-placement="top">60%</div>
+              </div>
+              <div class="bar ">
+                <div class="title">APR</div>
+                <div class="value tooltips" data-original-title="4.500" data-toggle="tooltip" data-placement="top">45%</div>
+              </div>
+              <div class="bar">
+                <div class="title">MAY</div>
+                <div class="value tooltips" data-original-title="3.200" data-toggle="tooltip" data-placement="top">32%</div>
+              </div>
+              <div class="bar ">
+                <div class="title">JUN</div>
+                <div class="value tooltips" data-original-title="6.200" data-toggle="tooltip" data-placement="top">62%</div>
+              </div>
+              <div class="bar">
+                <div class="title">JUL</div>
+                <div class="value tooltips" data-original-title="7.500" data-toggle="tooltip" data-placement="top">75%</div>
+              </div>
             </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-                <span class="count_top"><i class="fa fa-user"></i> Total Males</span>
-                <div class="count green">2,500</div>
-                <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+            <!--custom chart end-->
+            <div class="row mt">
+              <!-- SERVER STATUS PANELS -->
+              <div class="col-md-4 col-sm-4 mb">
+                <div class="grey-panel pn donut-chart">
+                  <div class="grey-header">
+                    <h5>SERVER LOAD</h5>
+                  </div>
+                  <canvas id="serverstatus01" height="120" width="120"></canvas>
+                  <script>
+                    var doughnutData = [{
+                        value: 70,
+                        color: "#FF6B6B"
+                      },
+                      {
+                        value: 30,
+                        color: "#fdfdfd"
+                      }
+                    ];
+                    var myDoughnut = new Chart(document.getElementById("serverstatus01").getContext("2d")).Doughnut(doughnutData);
+                  </script>
+                  <div class="row">
+                    <div class="col-sm-6 col-xs-6 goleft">
+                      <p>Usage<br/>Increase:</p>
+                    </div>
+                    <div class="col-sm-6 col-xs-6">
+                      <h2>21%</h2>
+                    </div>
+                  </div>
+                </div>
+                <!-- /grey-panel -->
+              </div>
+              <!-- /col-md-4-->
+              <div class="col-md-4 col-sm-4 mb">
+                <div class="darkblue-panel pn">
+                  <div class="darkblue-header">
+                    <h5>DROPBOX STATICS</h5>
+                  </div>
+                  <canvas id="serverstatus02" height="120" width="120"></canvas>
+                  <script>
+                    var doughnutData = [{
+                        value: 60,
+                        color: "#1c9ca7"
+                      },
+                      {
+                        value: 40,
+                        color: "#f68275"
+                      }
+                    ];
+                    var myDoughnut = new Chart(document.getElementById("serverstatus02").getContext("2d")).Doughnut(doughnutData);
+                  </script>
+                  <p>April 17, 2014</p>
+                  <footer>
+                    <div class="pull-left">
+                      <h5><i class="fa fa-hdd-o"></i> 17 GB</h5>
+                    </div>
+                    <div class="pull-right">
+                      <h5>60% Used</h5>
+                    </div>
+                  </footer>
+                </div>
+                <!--  /darkblue panel -->
+              </div>
+              <!-- /col-md-4 -->
+              <div class="col-md-4 col-sm-4 mb">
+                <!-- REVENUE PANEL -->
+                <div class="green-panel pn">
+                  <div class="green-header">
+                    <h5>REVENUE</h5>
+                  </div>
+                  <div class="chart mt">
+                    <div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4" data-data="[200,135,667,333,526,996,564,123,890,464,655]"></div>
+                  </div>
+                  <p class="mt"><b>$ 17,980</b><br/>Month Income</p>
+                </div>
+              </div>
+              <!-- /col-md-4 -->
             </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-                <span class="count_top"><i class="fa fa-user"></i> Total Females</span>
-                <div class="count">4,567</div>
-                <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
-            </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-                <span class="count_top"><i class="fa fa-user"></i> Total Collections</span>
-                <div class="count">2,315</div>
-                <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
-            </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-                <span class="count_top"><i class="fa fa-user"></i> Total Connections</span>
-                <div class="count">7,325</div>
-                <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
-            </div>
-            </div>
-            <!-- /top tiles -->
-
+            <!-- /row -->
             <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="dashboard_graph">
-
-                <div class="row x_title">
+              <!-- WEATHER PANEL -->
+              <div class="col-md-4 mb">
+                <div class="weather pn">
+                  <i class="fa fa-cloud fa-4x"></i>
+                  <h2>11º C</h2>
+                  <h4>BUDAPEST</h4>
+                </div>
+              </div>
+              <!-- /col-md-4-->
+              <!-- DIRECT MESSAGE PANEL -->
+              <div class="col-md-8 mb">
+                <div class="message-p pn">
+                  <div class="message-header">
+                    <h5>DIRECT MESSAGE</h5>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3 centered hidden-sm hidden-xs">
+                      <img src="{{ url('/dashio') }}/img/ui-danro.jpg" class="img-circle" width="65">
+                    </div>
+                    <div class="col-md-9">
+                      <p>
+                        <name>Dan Rogers</name>
+                        sent you a message.
+                      </p>
+                      <p class="small">3 hours ago</p>
+                      <p class="message">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                      <form class="form-inline" role="form">
+                        <div class="form-group">
+                          <input type="text" class="form-control" id="exampleInputText" placeholder="Reply Dan">
+                        </div>
+                        <button type="submit" class="btn btn-default">Send</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <!-- /Message Panel-->
+              </div>
+              <!-- /col-md-8  -->
+            </div>
+            <div class="row">
+              <!-- TWITTER PANEL -->
+              <div class="col-md-4 mb">
+                <div class="twitter-panel pn">
+                  <i class="fa fa-twitter fa-4x"></i>
+                  <p>Dashio is here! Take a look and enjoy this new Bootstrap Dashboard theme.</p>
+                  <p class="user">@Alvrz_is</p>
+                </div>
+              </div>
+              <!-- /col-md-4 -->
+              <div class="col-md-4 mb">
+                <!-- WHITE PANEL - TOP USER -->
+                <div class="white-panel pn">
+                  <div class="white-header">
+                    <h5>TOP USER</h5>
+                  </div>
+                  <p><img src="{{ url('/dashio') }}/img/ui-zac.jpg" class="img-circle" width="50"></p>
+                  <p><b>Zac Snider</b></p>
+                  <div class="row">
                     <div class="col-md-6">
-                    <h3>Network Activities <small>Graph title sub-title</small></h3>
+                      <p class="small mt">MEMBER SINCE</p>
+                      <p>2012</p>
                     </div>
                     <div class="col-md-6">
-                    <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
-                        <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                        <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
+                      <p class="small mt">TOTAL SPEND</p>
+                      <p>$ 47,60</p>
                     </div>
-                    </div>
+                  </div>
                 </div>
-
-                <div class="col-md-9 col-sm-9 col-xs-12">
-                    <div id="chart_plot_01" class="demo-placeholder"></div>
+              </div>
+              <!-- /col-md-4 -->
+              <div class="col-md-4 mb">
+                <!-- INSTAGRAM PANEL -->
+                <div class="instagram-panel pn">
+                  <i class="fa fa-instagram fa-4x"></i>
+                  <p>@THISISYOU<br/> 5 min. ago
+                  </p>
+                  <p><i class="fa fa-comment"></i> 18 | <i class="fa fa-heart"></i> 49</p>
                 </div>
-                <div class="col-md-3 col-sm-3 col-xs-12 bg-white">
-                    <div class="x_title">
-                    <h2>Top Campaign Performance</h2>
-                    <div class="clearfix"></div>
-                    </div>
-
-                    <div class="col-md-12 col-sm-12 col-xs-6">
-                    <div>
-                        <p>Facebook Campaign</p>
-                        <div class="">
-                        <div class="progress progress_sm" style="width: 76%;">
-                            <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="80"></div>
-                        </div>
-                        </div>
-                    </div>
-                    <div>
-                        <p>Twitter Campaign</p>
-                        <div class="">
-                        <div class="progress progress_sm" style="width: 76%;">
-                            <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="60"></div>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="col-md-12 col-sm-12 col-xs-6">
-                    <div>
-                        <p>Conventional Media</p>
-                        <div class="">
-                        <div class="progress progress_sm" style="width: 76%;">
-                            <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="40"></div>
-                        </div>
-                        </div>
-                    </div>
-                    <div>
-                        <p>Bill boards</p>
-                        <div class="">
-                        <div class="progress progress_sm" style="width: 76%;">
-                            <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50"></div>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-
-                </div>
-
-                <div class="clearfix"></div>
-                </div>
+              </div>
+              <!-- /col-md-4 -->
             </div>
-
-            </div>
-            <br />
-
+            <!-- /row -->
             <div class="row">
-
-
-            <div class="col-md-4 col-sm-4 col-xs-12">
-                <div class="x_panel tile fixed_height_320">
-                <div class="x_title">
-                    <h2>App Versions</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                        <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Settings 1</a>
-                        </li>
-                        <li><a href="#">Settings 2</a>
-                        </li>
-                        </ul>
-                    </li>
-                    <li><a class="close-link"><i class="fa fa-close"></i></a>
-                    </li>
-                    </ul>
-                    <div class="clearfix"></div>
+              <div class="col-lg-4 col-md-4 col-sm-4 mb">
+                <div class="product-panel-2 pn">
+                  <div class="badge badge-hot">HOT</div>
+                  <img src="{{ url('/dashio') }}/img/product.jpg" width="200" alt="">
+                  <h5 class="mt">Flat Pack Heritage</h5>
+                  <h6>TOTAL SALES: 1388</h6>
+                  <button class="btn btn-small btn-theme04">FULL REPORT</button>
                 </div>
-                <div class="x_content">
-                    <h4>App Usage across versions</h4>
-                    <div class="widget_summary">
-                    <div class="w_left w_25">
-                        <span>0.1.5.2</span>
+              </div>
+              <!-- /col-md-4 -->
+              <!--  PROFILE 02 PANEL -->
+              <div class="col-lg-4 col-md-4 col-sm-4 mb">
+                <div class="content-panel pn">
+                  <div id="profile-02">
+                    <div class="user">
+                      <img src="{{ url('/dashio') }}/img/friends/fr-06.jpg" class="img-circle" width="80">
+                      <h4>DJ SHERMAN</h4>
                     </div>
-                    <div class="w_center w_55">
-                        <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 66%;">
-                            <span class="sr-only">60% Complete</span>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="w_right w_20">
-                        <span>123k</span>
-                    </div>
-                    <div class="clearfix"></div>
-                    </div>
-
-                    <div class="widget_summary">
-                    <div class="w_left w_25">
-                        <span>0.1.5.3</span>
-                    </div>
-                    <div class="w_center w_55">
-                        <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 45%;">
-                            <span class="sr-only">60% Complete</span>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="w_right w_20">
-                        <span>53k</span>
-                    </div>
-                    <div class="clearfix"></div>
-                    </div>
-                    <div class="widget_summary">
-                    <div class="w_left w_25">
-                        <span>0.1.5.4</span>
-                    </div>
-                    <div class="w_center w_55">
-                        <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 25%;">
-                            <span class="sr-only">60% Complete</span>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="w_right w_20">
-                        <span>23k</span>
-                    </div>
-                    <div class="clearfix"></div>
-                    </div>
-                    <div class="widget_summary">
-                    <div class="w_left w_25">
-                        <span>0.1.5.5</span>
-                    </div>
-                    <div class="w_center w_55">
-                        <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 5%;">
-                            <span class="sr-only">60% Complete</span>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="w_right w_20">
-                        <span>3k</span>
-                    </div>
-                    <div class="clearfix"></div>
-                    </div>
-                    <div class="widget_summary">
-                    <div class="w_left w_25">
-                        <span>0.1.5.6</span>
-                    </div>
-                    <div class="w_center w_55">
-                        <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 2%;">
-                            <span class="sr-only">60% Complete</span>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="w_right w_20">
-                        <span>1k</span>
-                    </div>
-                    <div class="clearfix"></div>
-                    </div>
-
+                  </div>
+                  <div class="pr2-social centered">
+                    <a href="{{ url('/dashio') }}/#"><i class="fa fa-twitter"></i></a>
+                    <a href="{{ url('/dashio') }}/#"><i class="fa fa-facebook"></i></a>
+                    <a href="{{ url('/dashio') }}/#"><i class="fa fa-dribbble"></i></a>
+                  </div>
                 </div>
+                <!-- /panel -->
+              </div>
+              <!--/ col-md-4 -->
+              <div class="col-md-4 col-sm-4 mb">
+                <div class="green-panel pn">
+                  <div class="green-header">
+                    <h5>DISK SPACE</h5>
+                  </div>
+                  <canvas id="serverstatus03" height="120" width="120"></canvas>
+                  <script>
+                    var doughnutData = [{
+                        value: 60,
+                        color: "#2b2b2b"
+                      },
+                      {
+                        value: 40,
+                        color: "#fffffd"
+                      }
+                    ];
+                    var myDoughnut = new Chart(document.getElementById("serverstatus03").getContext("2d")).Doughnut(doughnutData);
+                  </script>
+                  <h3>60% USED</h3>
                 </div>
+              </div>
+              <!-- /col-md-4 -->
             </div>
-
-            <div class="col-md-4 col-sm-4 col-xs-12">
-                <div class="x_panel tile fixed_height_320 overflow_hidden">
-                <div class="x_title">
-                    <h2>Device Usage</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                        <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Settings 1</a>
-                        </li>
-                        <li><a href="#">Settings 2</a>
-                        </li>
-                        </ul>
-                    </li>
-                    <li><a class="close-link"><i class="fa fa-close"></i></a>
-                    </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                    <table class="" style="width:100%">
-                    <tr>
-                        <th style="width:37%;">
-                        <p>Top 5</p>
-                        </th>
-                        <th>
-                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-                            <p class="">Device</p>
-                        </div>
-                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                            <p class="">Progress</p>
-                        </div>
-                        </th>
-                    </tr>
-                    <tr>
-                        <td>
-                        <canvas class="canvasDoughnut" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
-                        </td>
-                        <td>
-                        <table class="tile_info">
-                            <tr>
-                            <td>
-                                <p><i class="fa fa-square blue"></i>IOS </p>
-                            </td>
-                            <td>30%</td>
-                            </tr>
-                            <tr>
-                            <td>
-                                <p><i class="fa fa-square green"></i>Android </p>
-                            </td>
-                            <td>10%</td>
-                            </tr>
-                            <tr>
-                            <td>
-                                <p><i class="fa fa-square purple"></i>Blackberry </p>
-                            </td>
-                            <td>20%</td>
-                            </tr>
-                            <tr>
-                            <td>
-                                <p><i class="fa fa-square aero"></i>Symbian </p>
-                            </td>
-                            <td>15%</td>
-                            </tr>
-                            <tr>
-                            <td>
-                                <p><i class="fa fa-square red"></i>Others </p>
-                            </td>
-                            <td>30%</td>
-                            </tr>
-                        </table>
-                        </td>
-                    </tr>
-                    </table>
-                </div>
-                </div>
+            <!-- /row -->
+          </div>
+          <!-- /col-lg-9 END SECTION MIDDLE -->
+          <!-- **********************************************************************************************************************************************************
+              RIGHT SIDEBAR CONTENT
+              *********************************************************************************************************************************************************** -->
+          <div class="col-lg-3 ds">
+            <!--COMPLETED ACTIONS DONUTS CHART-->
+            <div class="donut-main">
+              <h4>COMPLETED ACTIONS & PROGRESS</h4>
+              <canvas id="newchart" height="130" width="130"></canvas>
+              <script>
+                var doughnutData = [{
+                    value: 70,
+                    color: "#4ECDC4"
+                  },
+                  {
+                    value: 30,
+                    color: "#fdfdfd"
+                  }
+                ];
+                var myDoughnut = new Chart(document.getElementById("newchart").getContext("2d")).Doughnut(doughnutData);
+              </script>
             </div>
-
-
-            <div class="col-md-4 col-sm-4 col-xs-12">
-                <div class="x_panel tile fixed_height_320">
-                <div class="x_title">
-                    <h2>Quick Settings</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                        <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Settings 1</a>
-                        </li>
-                        <li><a href="#">Settings 2</a>
-                        </li>
-                        </ul>
-                    </li>
-                    <li><a class="close-link"><i class="fa fa-close"></i></a>
-                    </li>
-                    </ul>
-                    <div class="clearfix"></div>
+            <!--NEW EARNING STATS -->
+            <div class="panel terques-chart">
+              <div class="panel-body">
+                <div class="chart">
+                  <div class="centered">
+                    <span>TODAY EARNINGS</span>
+                    <strong>$ 890,00 | 15%</strong>
+                  </div>
+                  <br>
+                  <div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4" data-data="[200,135,667,333,526,996,564,123,890,564,455]"></div>
                 </div>
-                <div class="x_content">
-                    <div class="dashboard-widget-content">
-                    <ul class="quick-list">
-                        <li><i class="fa fa-calendar-o"></i><a href="#">Settings</a>
-                        </li>
-                        <li><i class="fa fa-bars"></i><a href="#">Subscription</a>
-                        </li>
-                        <li><i class="fa fa-bar-chart"></i><a href="#">Auto Renewal</a> </li>
-                        <li><i class="fa fa-line-chart"></i><a href="#">Achievements</a>
-                        </li>
-                        <li><i class="fa fa-bar-chart"></i><a href="#">Auto Renewal</a> </li>
-                        <li><i class="fa fa-line-chart"></i><a href="#">Achievements</a>
-                        </li>
-                        <li><i class="fa fa-area-chart"></i><a href="#">Logout</a>
-                        </li>
-                    </ul>
-
-                    <div class="sidebar-widget">
-                        <h4>Profile Completion</h4>
-                        <canvas width="150" height="80" id="chart_gauge_01" class="" style="width: 160px; height: 100px;"></canvas>
-                        <div class="goal-wrapper">
-                            <span id="gauge-text" class="gauge-value pull-left">0</span>
-                            <span class="gauge-value pull-left">%</span>
-                            <span id="goal-text" class="goal-value pull-right">100%</span>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                </div>
+              </div>
             </div>
-
+            <!--new earning end-->
+            <!-- RECENT ACTIVITIES SECTION -->
+            <h4 class="centered mt">RECENT ACTIVITY</h4>
+            <!-- First Activity -->
+            <div class="desc">
+              <div class="thumb">
+                <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
+              </div>
+              <div class="details">
+                <p>
+                  <muted>Just Now</muted>
+                  <br/>
+                  <a href="{{ url('/dashio') }}/#">Paul Rudd</a> purchased an item.<br/>
+                </p>
+              </div>
             </div>
-
-
-            <div class="row">
-            <div class="col-md-4 col-sm-4 col-xs-12">
-                <div class="x_panel">
-                <div class="x_title">
-                    <h2>Recent Activities <small>Sessions</small></h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                        <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Settings 1</a>
-                        </li>
-                        <li><a href="#">Settings 2</a>
-                        </li>
-                        </ul>
-                    </li>
-                    <li><a class="close-link"><i class="fa fa-close"></i></a>
-                    </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                    <div class="dashboard-widget-content">
-
-                    <ul class="list-unstyled timeline widget">
-                        <li>
-                        <div class="block">
-                            <div class="block_content">
-                            <h2 class="title">
-                                                <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
-                                            </h2>
-                            <div class="byline">
-                                <span>13 hours ago</span> by <a>Jane Smith</a>
-                            </div>
-                            <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
-                            </p>
-                            </div>
-                        </div>
-                        </li>
-                        <li>
-                        <div class="block">
-                            <div class="block_content">
-                            <h2 class="title">
-                                                <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
-                                            </h2>
-                            <div class="byline">
-                                <span>13 hours ago</span> by <a>Jane Smith</a>
-                            </div>
-                            <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
-                            </p>
-                            </div>
-                        </div>
-                        </li>
-                        <li>
-                        <div class="block">
-                            <div class="block_content">
-                            <h2 class="title">
-                                                <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
-                                            </h2>
-                            <div class="byline">
-                                <span>13 hours ago</span> by <a>Jane Smith</a>
-                            </div>
-                            <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
-                            </p>
-                            </div>
-                        </div>
-                        </li>
-                        <li>
-                        <div class="block">
-                            <div class="block_content">
-                            <h2 class="title">
-                                                <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
-                                            </h2>
-                            <div class="byline">
-                                <span>13 hours ago</span> by <a>Jane Smith</a>
-                            </div>
-                            <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
-                            </p>
-                            </div>
-                        </div>
-                        </li>
-                    </ul>
-                    </div>
-                </div>
-                </div>
+            <!-- Second Activity -->
+            <div class="desc">
+              <div class="thumb">
+                <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
+              </div>
+              <div class="details">
+                <p>
+                  <muted>2 Minutes Ago</muted>
+                  <br/>
+                  <a href="{{ url('/dashio') }}/#">James Brown</a> subscribed to your newsletter.<br/>
+                </p>
+              </div>
             </div>
-
-
-            <div class="col-md-8 col-sm-8 col-xs-12">
-
-
-
-                <div class="row">
-
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <div class="x_panel">
-                    <div class="x_title">
-                        <h2>Visitors location <small>geo-presentation</small></h2>
-                        <ul class="nav navbar-right panel_toolbox">
-                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                            <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Settings 1</a>
-                            </li>
-                            <li><a href="#">Settings 2</a>
-                            </li>
-                            </ul>
-                        </li>
-                        <li><a class="close-link"><i class="fa fa-close"></i></a>
-                        </li>
-                        </ul>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="x_content">
-                        <div class="dashboard-widget-content">
-                        <div class="col-md-4 hidden-small">
-                            <h2 class="line_30">125.7k Views from 60 countries</h2>
-
-                            <table class="countries_list">
-                            <tbody>
-                                <tr>
-                                <td>United States</td>
-                                <td class="fs15 fw700 text-right">33%</td>
-                                </tr>
-                                <tr>
-                                <td>France</td>
-                                <td class="fs15 fw700 text-right">27%</td>
-                                </tr>
-                                <tr>
-                                <td>Germany</td>
-                                <td class="fs15 fw700 text-right">16%</td>
-                                </tr>
-                                <tr>
-                                <td>Spain</td>
-                                <td class="fs15 fw700 text-right">11%</td>
-                                </tr>
-                                <tr>
-                                <td>Britain</td>
-                                <td class="fs15 fw700 text-right">10%</td>
-                                </tr>
-                            </tbody>
-                            </table>
-                        </div>
-                        <div id="world-map-gdp" class="col-md-8 col-sm-12 col-xs-12" style="height:230px;"></div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-
-                </div>
-                <div class="row">
-
-
-                <!-- Start to do list -->
-                <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="x_panel">
-                    <div class="x_title">
-                        <h2>To Do List <small>Sample tasks</small></h2>
-                        <ul class="nav navbar-right panel_toolbox">
-                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                            <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Settings 1</a>
-                            </li>
-                            <li><a href="#">Settings 2</a>
-                            </li>
-                            </ul>
-                        </li>
-                        <li><a class="close-link"><i class="fa fa-close"></i></a>
-                        </li>
-                        </ul>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="x_content">
-
-                        <div class="">
-                        <ul class="to_do">
-                            <li>
-                            <p>
-                                <input type="checkbox" class="flat"> Schedule meeting with new client </p>
-                            </li>
-                            <li>
-                            <p>
-                                <input type="checkbox" class="flat"> Create email address for new intern</p>
-                            </li>
-                            <li>
-                            <p>
-                                <input type="checkbox" class="flat"> Have IT fix the network printer</p>
-                            </li>
-                            <li>
-                            <p>
-                                <input type="checkbox" class="flat"> Copy backups to offsite location</p>
-                            </li>
-                            <li>
-                            <p>
-                                <input type="checkbox" class="flat"> Food truck fixie locavors mcsweeney</p>
-                            </li>
-                            <li>
-                            <p>
-                                <input type="checkbox" class="flat"> Food truck fixie locavors mcsweeney</p>
-                            </li>
-                            <li>
-                            <p>
-                                <input type="checkbox" class="flat"> Create email address for new intern</p>
-                            </li>
-                            <li>
-                            <p>
-                                <input type="checkbox" class="flat"> Have IT fix the network printer</p>
-                            </li>
-                            <li>
-                            <p>
-                                <input type="checkbox" class="flat"> Copy backups to offsite location</p>
-                            </li>
-                        </ul>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                <!-- End to do list -->
-                
-                <!-- start of weather widget -->
-                <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="x_panel">
-                    <div class="x_title">
-                        <h2>Daily active users <small>Sessions</small></h2>
-                        <ul class="nav navbar-right panel_toolbox">
-                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                            <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Settings 1</a>
-                            </li>
-                            <li><a href="#">Settings 2</a>
-                            </li>
-                            </ul>
-                        </li>
-                        <li><a class="close-link"><i class="fa fa-close"></i></a>
-                        </li>
-                        </ul>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="x_content">
-                        <div class="row">
-                        <div class="col-sm-12">
-                            <div class="temperature"><b>Monday</b>, 07:30 AM
-                            <span>F</span>
-                            <span><b>C</b></span>
-                            </div>
-                        </div>
-                        </div>
-                        <div class="row">
-                        <div class="col-sm-4">
-                            <div class="weather-icon">
-                            <canvas height="84" width="84" id="partly-cloudy-day"></canvas>
-                            </div>
-                        </div>
-                        <div class="col-sm-8">
-                            <div class="weather-text">
-                            <h2>Texas <br><i>Partly Cloudy Day</i></h2>
-                            </div>
-                        </div>
-                        </div>
-                        <div class="col-sm-12">
-                        <div class="weather-text pull-right">
-                            <h3 class="degrees">23</h3>
-                        </div>
-                        </div>
-
-                        <div class="clearfix"></div>
-
-                        <div class="row weather-days">
-                        <div class="col-sm-2">
-                            <div class="daily-weather">
-                            <h2 class="day">Mon</h2>
-                            <h3 class="degrees">25</h3>
-                            <canvas id="clear-day" width="32" height="32"></canvas>
-                            <h5>15 <i>km/h</i></h5>
-                            </div>
-                        </div>
-                        <div class="col-sm-2">
-                            <div class="daily-weather">
-                            <h2 class="day">Tue</h2>
-                            <h3 class="degrees">25</h3>
-                            <canvas height="32" width="32" id="rain"></canvas>
-                            <h5>12 <i>km/h</i></h5>
-                            </div>
-                        </div>
-                        <div class="col-sm-2">
-                            <div class="daily-weather">
-                            <h2 class="day">Wed</h2>
-                            <h3 class="degrees">27</h3>
-                            <canvas height="32" width="32" id="snow"></canvas>
-                            <h5>14 <i>km/h</i></h5>
-                            </div>
-                        </div>
-                        <div class="col-sm-2">
-                            <div class="daily-weather">
-                            <h2 class="day">Thu</h2>
-                            <h3 class="degrees">28</h3>
-                            <canvas height="32" width="32" id="sleet"></canvas>
-                            <h5>15 <i>km/h</i></h5>
-                            </div>
-                        </div>
-                        <div class="col-sm-2">
-                            <div class="daily-weather">
-                            <h2 class="day">Fri</h2>
-                            <h3 class="degrees">28</h3>
-                            <canvas height="32" width="32" id="wind"></canvas>
-                            <h5>11 <i>km/h</i></h5>
-                            </div>
-                        </div>
-                        <div class="col-sm-2">
-                            <div class="daily-weather">
-                            <h2 class="day">Sat</h2>
-                            <h3 class="degrees">26</h3>
-                            <canvas height="32" width="32" id="cloudy"></canvas>
-                            <h5>10 <i>km/h</i></h5>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                        </div>
-                    </div>
-                    </div>
-
-                </div>
-                <!-- end of weather widget -->
-                </div>
+            <!-- Third Activity -->
+            <div class="desc">
+              <div class="thumb">
+                <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
+              </div>
+              <div class="details">
+                <p>
+                  <muted>3 Hours Ago</muted>
+                  <br/>
+                  <a href="{{ url('/dashio') }}/#">Diana Kennedy</a> purchased a year subscription.<br/>
+                </p>
+              </div>
             </div>
+            <!-- Fourth Activity -->
+            <div class="desc">
+              <div class="thumb">
+                <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
+              </div>
+              <div class="details">
+                <p>
+                  <muted>7 Hours Ago</muted>
+                  <br/>
+                  <a href="{{ url('/dashio') }}/#">Brando Page</a> purchased a year subscription.<br/>
+                </p>
+              </div>
             </div>
+            <!-- USERS ONLINE SECTION -->
+            <h4 class="centered mt">TEAM MEMBERS ONLINE</h4>
+            <!-- First Member -->
+            <div class="desc">
+              <div class="thumb">
+                <img class="img-circle" src="{{ url('/dashio') }}/img/ui-divya.jpg" width="35px" height="35px" align="">
+              </div>
+              <div class="details">
+                <p>
+                  <a href="{{ url('/dashio') }}/#">DIVYA MANIAN</a><br/>
+                  <muted>Available</muted>
+                </p>
+              </div>
+            </div>
+            <!-- Second Member -->
+            <div class="desc">
+              <div class="thumb">
+                <img class="img-circle" src="{{ url('/dashio') }}/img/ui-sherman.jpg" width="35px" height="35px" align="">
+              </div>
+              <div class="details">
+                <p>
+                  <a href="{{ url('/dashio') }}/#">DJ SHERMAN</a><br/>
+                  <muted>I am Busy</muted>
+                </p>
+              </div>
+            </div>
+            <!-- Third Member -->
+            <div class="desc">
+              <div class="thumb">
+                <img class="img-circle" src="{{ url('/dashio') }}/img/ui-danro.jpg" width="35px" height="35px" align="">
+              </div>
+              <div class="details">
+                <p>
+                  <a href="{{ url('/dashio') }}/#">DAN ROGERS</a><br/>
+                  <muted>Available</muted>
+                </p>
+              </div>
+            </div>
+            <!-- Fourth Member -->
+            <div class="desc">
+              <div class="thumb">
+                <img class="img-circle" src="{{ url('/dashio') }}/img/ui-zac.jpg" width="35px" height="35px" align="">
+              </div>
+              <div class="details">
+                <p>
+                  <a href="{{ url('/dashio') }}/#">Zac Sniders</a><br/>
+                  <muted>Available</muted>
+                </p>
+              </div>
+            </div>
+            <!-- CALENDAR-->
+            <div id="calendar" class="mb">
+              <div class="panel green-panel no-margin">
+                <div class="panel-body">
+                  <div id="date-popover" class="popover top" style="cursor: pointer; disadding: block; margin-left: 33%; margin-top: -50px; width: 175px;">
+                    <div class="arrow"></div>
+                    <h3 class="popover-title" style="disadding: none;"></h3>
+                    <div id="date-popover-content" class="popover-content"></div>
+                  </div>
+                  <div id="my-calendar"></div>
+                </div>
+              </div>
+            </div>
+            <!-- / calendar -->
+          </div>
+          <!-- /col-lg-3 -->
         </div>
-    <!-- /page content -->
+        <!-- /row -->
+      </section>
+    </section>
+    <!--main content end-->
     @include('admin/dashboard-layout/footer')
-        </div>
-    </div>
-@endsection
+    </section>
+@endsection                              

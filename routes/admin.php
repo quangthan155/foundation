@@ -20,4 +20,6 @@ Route::get('/logout', 'Admin\LoginController@logout')
 ->name('admin_logout');
 
 Route::get('/dashboard', 'Admin\AdminController@dashboard');
+
+Route::get('/dashboard-demo', 'Admin\AdminController@dashboardDemo');
 ?>
