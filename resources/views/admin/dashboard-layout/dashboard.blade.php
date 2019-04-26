@@ -1,14 +1,11 @@
 @extends('layouts.admin.dashboard')
 <body>
     <section id="container">
-    @include('admin/dashboard-layout/header')
-    @include('admin/dashboard-layout/sidebar')
     @section('content')
     <!-- **********************************************************************************************************************************************************
         MAIN CONTENT
         *********************************************************************************************************************************************************** -->
     <!--main content start-->
-    <section id="main-content">
       <section class="wrapper">
         <div class="row">
           <div class="col-lg-9 main-chart">
@@ -429,8 +426,6 @@
         </div>
         <!-- /row -->
       </section>
-    </section>
     <!--main content end-->
-    @include('admin/dashboard-layout/footer')
     </section>
 @endsection                              

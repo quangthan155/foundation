@@ -33,18 +33,8 @@
 </head>
 <body>
     <section id="container">
-    @include('admin/dashboard-layout/header')
-    @include('admin/dashboard-layout/sidebar')
-    <section id="main-content">
-      <section class="wrapper">
-        <div class="row">
-          <div class="col-lg-12">
-            @yield('content')
-          </div>
-        </div>
-      </section>
-    </section>
-    
+
+    @yield('content')
 
   </section>
   <!-- js placed at the end of the document so the pages load faster -->

@@ -165,7 +165,9 @@ return [
         
         /* Permission manager */
         Spatie\Permission\PermissionServiceProvider::class,
-        
+
+        /* I5 repository */
+        Prettus\Repository\Providers\RepositoryServiceProvider::class,
         /*
          * Package Service Providers...
          */

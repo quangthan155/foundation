@@ -38,7 +38,7 @@ class LoginController extends BaseController
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        //$this->middleware('admin');
     }
 
     public function login(Request $request)
@@ -67,8 +67,4 @@ class LoginController extends BaseController
         ]);
     }
 
-    protected function guard()
-    {
-        return Auth::guard('web');
-    }
 }

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
-use App\Http\Requests\AdminLoginRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Validation\ValidationException;
@@ -11,14 +10,17 @@ use Illuminate\Validation\ValidationException;
 class LoginController extends BaseController
 {   
 
-    use AuthenticatesUsers;
-
+    use AuthenticatesUsers {
+        logout as performLogout;
+    }
+    
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
     protected $redirectTo = '/admin/dashboard';
+
 
     /**
      * Create a new controller instance.
@@ -27,7 +29,7 @@ class LoginController extends BaseController
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        // $this->middleware('guest')->except('logout');
     }
 
     public function showLoginForm()
@@ -37,15 +39,16 @@ class LoginController extends BaseController
 
     public function login(Request $request)
     {                
-        $this->validateLogin($request);
 
+        $this->validateLogin($request);
+        
         if ($this->hasTooManyLoginAttempts($request)) {
             $this->fireLockoutEvent($request);
 
             return $this->sendLockoutResponse($request);
         }
-
-        if ($this->attemptLogin($request)) {
+        
+        if (auth()->guard('admin')->attempt(['email' => $request->email, 'password' => $request->password]) | auth()->guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
             return $this->sendLoginResponse($request);
         }
 
@@ -68,9 +71,12 @@ class LoginController extends BaseController
         ]);
     }
 
-    protected function guard()
+    public function logout(Request $request)
     {
-        return Auth::guard('admin');
+        $this->performLogout($request);
+        return redirect()->route('admin_login');
     }
+
+
 
 }

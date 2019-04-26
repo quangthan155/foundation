@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Middleware;
-
 use Closure;
 use Auth;
 class Admin 
@@ -13,11 +11,13 @@ class Admin
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
-    {
-        if(Auth::user() && Auth::user()->role_id == 1) {
-            return $next($request);
-        } 
-        return redirect('admin/login');
+    public function handle($request, Closure $next, $guard = 'admin')
+    {        
+
+        if (!Auth::guard($guard)->check()) {
+            return redirect('/');
+        }
+    
+        return $next($request);
     }
 }

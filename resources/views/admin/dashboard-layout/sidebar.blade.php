@@ -15,6 +15,16 @@
           </a>
       </li>
       <li class="sub-menu">
+          <a href="{{ url('/dashio') }}/javascript:;">
+            <i class="fa fa-desktop"></i>
+            <span>Users</span>
+            </a>
+          <ul class="sub">
+            <li><a href="{{ url('/dashio') }}/general.html">Create</a></li>
+            <li><a href="{{ url('/dashio') }}/buttons.html">List</a></li>
+          </ul>
+        </li>
+      <li class="sub-menu">
         <a href="{{ url('/dashio') }}/javascript:;">
           <i class="fa fa-desktop"></i>
           <span>Permission management</span>

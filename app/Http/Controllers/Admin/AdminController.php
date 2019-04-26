@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 
 class AdminController extends BaseController
@@ -19,8 +19,8 @@ class AdminController extends BaseController
     public function dashboard() {    
         return view('admin.dashboard-layout.dashboard');
     }
-    
-    public function dashboardDemo() {    
-        return view('admin.dashboard-layout.admin_template');
-    }
+   
+    // public function dashboardDemo() {    
+    //     return view('admin.dashboard-layout.admin_template');
+    // }
 }
