@@ -48,7 +48,7 @@ class LoginController extends BaseController
             return $this->sendLockoutResponse($request);
         }
         
-        if (auth()->guard('admin')->attempt(['email' => $request->email, 'password' => $request->password]) | auth()->guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
+        if (auth()->guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
             return $this->sendLoginResponse($request);
         }
 
@@ -73,10 +73,9 @@ class LoginController extends BaseController
 
     public function logout(Request $request)
     {
-        $this->performLogout($request);
+        Auth::guard('admin')->logout();
         return redirect()->route('admin_login');
     }
-
 
 
 }

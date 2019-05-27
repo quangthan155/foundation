@@ -38,7 +38,7 @@
                         <td>{{ $value->id }}</td>
                         <td><a href="{{ route('admin.user.edit', $value->id) }}">{{ $value->email }}</a></td>
                         <td>{{ ucfirst($value->name) }}</td>
-                        <td>{{ $positions[$value->position] }}</td>
+
                         <td>{{ $value->birthday }}</td>
                         <td>
                             @include('admin.partials.control-buttons-list-page', [

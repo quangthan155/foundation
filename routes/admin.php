@@ -17,6 +17,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/logout', 'Admin\LoginController@logout')       
     ->name('admin_logout');
     Route::get('/dashboard', 'Admin\AdminController@dashboard');
+    Route::get('/user', 'Admin\UserController@index')->name('admin.user.index');
 });
 
 
@@ -29,7 +30,7 @@ Route::group(['middleware' => 'web'], function () {
 |--------------------------------------------------------------------------
 */
 
-Route::get('/user', 'Admin\UserController@index')->name('admin.user.index');
+
 Route::get('/user/create', 'Admin\UserController@create')->name('admin.user.create');
 Route::post('/user/store', 'Admin\UserController@store')->name('admin.user.store');
 Route::get('/user/{id}', 'Admin\UserController@show')->name('admin.user.show');

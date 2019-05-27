@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Mail\SendMailRegisterSuccessfully;
+use Mail; 
 
 class HomeController extends Controller
 {
@@ -27,7 +29,16 @@ class HomeController extends Controller
     }
 
     public function admin()
-    { 
-        return view('admin'); 
+    {
+        return view('admin');
+    }
+
+    public function testSendingMail()
+    {
+        $comment = 'Hi, This test feedback.';
+        $toEmail = "quangthan155@gmail.com";
+        Mail::to($toEmail)->send(new SendMailRegisterSuccessfully($comment));
+
+        return 'Email has been sent to ' . $toEmail;
     }
 }
